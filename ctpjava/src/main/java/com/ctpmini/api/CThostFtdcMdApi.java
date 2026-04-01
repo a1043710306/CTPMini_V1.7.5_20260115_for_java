@@ -16,7 +16,7 @@ import com.ctpmini.struct.*;
  *
  * 注意：本类为Java接口层定义，实际调用需通过JNI加载 libthostmduserapi.so 本地库实现。
  */
-public abstract class CThostFtdcMdApi {
+public abstract class CThostFtdcMdApiImpl {
 
     /**
      * 创建MdApi实例（工厂方法，需要JNI实现）
@@ -26,9 +26,9 @@ public abstract class CThostFtdcMdApi {
      * @param bIsMulticast 是否使用组播（mini版本不使用，API根据连接的后台自动判断）
      * @return MdApi实例
      */
-    public static native CThostFtdcMdApi CreateFtdcMdApi(String pszFlowPath,
-                                                          boolean bIsUsingUdp,
-                                                          boolean bIsMulticast);
+    public static native CThostFtdcMdApiImpl CreateFtdcMdApi(String pszFlowPath,
+                                                             boolean bIsUsingUdp,
+                                                             boolean bIsMulticast);
 
     /**
      * 创建MdApi实例（使用默认参数）
@@ -36,7 +36,7 @@ public abstract class CThostFtdcMdApi {
      * @param pszFlowPath 存储订阅信息文件的目录
      * @return MdApi实例
      */
-    public static CThostFtdcMdApi CreateFtdcMdApi(String pszFlowPath) {
+    public static CThostFtdcMdApiImpl CreateFtdcMdApi(String pszFlowPath) {
         return CreateFtdcMdApi(pszFlowPath, false, false);
     }
 
